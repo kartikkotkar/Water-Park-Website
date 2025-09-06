@@ -1,0 +1,198 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Patil Water Park — Demo</title>
+  <meta name="description" content="Interactive demo site for a water-park project (HTML, CSS, JavaScript)" />
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+
+    <header>
+      <div class="brand">
+        <div class="logo">PATIL</div>
+        <div>
+          <div class="brand-name">PATIL WATER-PARK 💦</div>
+          <div class="brand-sub">Family Water Park</div>
+        </div>
+      </div>
+      <nav aria-label="Main navigation">
+        <a href="#attractions">Attractions</a>
+        <a href="#tickets">Tickets</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <button class="cta" id="openTickets">Book Tickets</button>
+    </header>
+
+    <section class="hero-card hero">
+
+
+      <div>
+        <h1>Make a splash at <span class="accent">Patil Water Park</span></h1>
+        <p class="lead">A  project demo.</p>
+        <div class="features">
+          <div class="pill">Slides</div>
+          <div class="pill">Lazy River</div>
+          <div class="pill">Wave Pool</div>
+        </div>
+
+
+        <div class="grid" style="margin-top:20px">
+          <div class="card">
+
+            <div class="thumb float">Thunder Slide</div>
+            <h3>Thunder Slide</h3>
+            <p>High-speed enclosed slide — thrill for teens and adults.</p>
+            <div class="price-row">
+              <strong>Age 12+ ₹350</strong>
+              <button class="btn-small" data-attraction="Thunder Slide" data-price="350">Book</button>
+            </div>
+
+          </div>
+
+          <div class="card">
+            <div class="thumb">Lazy River</div>
+            <h3>Lazy River</h3>
+            <p>Relax and float along with gentle currents.</p>
+            <div class="price-row">
+              <strong>All ages ₹150</strong>
+              <button class="btn-small" data-attraction="Lazy River" data-price="150">Book</button>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="thumb">Wave Pool</div>
+            <h3>Wave Pool</h3>
+            <p>Family-friendly wave pool with lifeguards on duty.</p>
+            <div class="price-row">
+              <strong>All ages ₹200</strong>
+              <button class="btn-small" data-attraction="Wave Pool" data-price="200">Book</button>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="thumb">Kids Cove</div>
+            <h3>Kids Cove</h3>
+            <p>Shallow pools and mini slides for children under 10.</p>
+            <div class="price-row">
+              <strong>0-10 yrs ₹100</strong>
+              <button class="btn-small" data-attraction="Kids Cove" data-price="100">Book</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <aside class="hero-card quick-widget">
+        <h3>Quick Ticket Calculator</h3>
+        <label for="adult">Adults (12+)</label>
+        <input type="number" id="adult" min="0" value="0">
+        <label for="child">Children (3-11)</label>
+        <input type="number" id="child" min="0" value="0">
+        <label for="infant">Infants (0-2)</label>
+        <input type="number" id="infant" min="0" value="0">
+        <div class="actions">
+          <button class="btn-small" id="calcBtn">Calculate</button>
+          <button class="btn-small" id="openFromCalc">Book</button>
+        </div>
+        <div class="summary" id="calcResult">Total: ₹0</div>
+      </aside>
+    </section>
+
+    <div class="wave" aria-hidden="true">
+      <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path d="M0,0 C300,80 900,0 1200,60 L1200,120 L0,120 Z" fill="url(#g)" />
+        <defs>
+          <linearGradient id="g" x1="0" x2="1">
+            <stop offset="0%" stop-color="#00c2ff" stop-opacity="0.9" />
+            <stop offset="100%" stop-color="#0099ff" stop-opacity="0.6" />
+          </linearGradient>
+        </defs>
+      </svg>
+    </div>
+
+    <main id="attractions">
+      <div style="margin-top:18px">
+        <h2>Attractions & Pricing</h2>
+        <p class="muted">Click "Book" on any attraction to open the booking form pre-filled for that attraction.</p>
+
+        <div class="grid" style="margin-top:12px">
+          <div class="card">
+            <div class="thumb">Splash Tower</div>
+            <h3>Splash Tower</h3>
+            <p>Interactive water falls and tipping buckets.</p>
+            <div class="price-row"><strong>All ages ₹120</strong><button class="btn-small" data-attraction="Splash Tower" data-price="120">Book</button></div>
+          </div>
+
+          <div class="card">
+            <div class="thumb">Family Rapids</div>
+            <h3>Family Rapids</h3>
+            <p>Multi-person raft ride for the whole family.</p>
+            <div class="price-row"><strong>All ages ₹300</strong><button class="btn-small" data-attraction="Family Rapids" data-price="300">Book</button></div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modal-card" role="document">
+        <div class="modal-header">
+          <h2 id="modalTitle">Book Tickets</h2>
+          <button id="closeModal" aria-label="Close">✕</button>
+        </div>
+
+        <form id="bookingForm">
+          <div class="row">
+            <div class="col">
+              <label for="attraction">Attraction</label>
+              <input type="text" id="attraction" required>
+            </div>
+            <div class="col">
+              <label for="date">Date</label>
+              <input type="date" id="date" required>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <label for="numAdult">Adults (12+)</label>
+              <input type="number" id="numAdult" min="0" value="0">
+            </div>
+            <div class="col">
+              <label for="numChild">Children (3-11)</label>
+              <input type="number" id="numChild" min="0" value="0">
+            </div>
+            <div class="col">
+              <label for="numInfant">Infants (0-2)</label>
+              <input type="number" id="numInfant" min="0" value="0">
+            </div>
+          </div>
+
+          <div class="summary" id="bookingSummary">
+            <div>Summary: <span id="summaryText">0 tickets — Total ₹0</span></div>
+          </div>
+
+          <div class="form-actions">
+            <button type="button" class="btn-small" id="confirmBtn">Confirm</button>
+            <button type="button" class="btn-small" id="cancelBtn">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <section id="contact">
+      <h2>Contact & Team</h2>
+      <p>Project by Team <strong>BlueWave Builders</strong> — built with HTML, CSS & vanilla JavaScript.</p>
+    </section>
+
+    <footer>
+      <small>© BlueWave — Demo project • Not a real park</small>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
